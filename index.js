@@ -1,17 +1,10 @@
-const Nexmo = require('nexmo');
+const express = require('express');
 
-const nexmo = new Nexmo({
-    apiKey: process.env.NEXMO_API_KEY,
-    apiSecret: process.env.NEXMO_API_SECRET
-});
+const app = express();
 
-const options = {
-    level: 'basic',
-    number: '14199564232'
-};
-
-const basicHandler = (error, response) => {
-    console.log(response);
+const webRoute = async (request, response) => {
+    response.send('Hello World');
 }
 
-nexmo.numberInsight.get(options, basicHandler);
+app.get('/', webRoute);
+app.listen(3000);
