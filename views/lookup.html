@@ -1,0 +1,35 @@
+<html>
+    <body>
+        <form>
+            <p>
+                Insights Level:
+                    <select name="level">
+                        <option value="basic">Basic</option>
+                        <option value="standard">Standard</option>
+                        <option value="advancedSync">Advanced</option>
+                    </select>
+            </p>
+
+            <p>
+                Telephone Number: <input type="text" name="number">
+            </p>
+
+            <p>
+                <input type="submit" value="Look Up Number">
+            </p>
+        </form>
+
+        {{#error}}
+            <span style="font-weight: bold; color: red">{{error.status_message}}</span>
+        {{/error}}
+
+        {{#insight}}
+            Country: {{ insight.country_name }}<br/>
+            International Format: {{ insight.international_format_number }}<br/>
+
+            {{#insight.current_carrier}}
+            Current Carrier: {{ insight.current_carrier.name }}
+            {{/insight.current_carrier}}
+        {{/insight}}
+    </body>
+</html>
